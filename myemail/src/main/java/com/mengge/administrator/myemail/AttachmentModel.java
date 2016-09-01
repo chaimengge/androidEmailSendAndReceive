@@ -20,10 +20,10 @@ public class AttachmentModel{
         this.attachmentsLength = attachmentsLength;
     }
 
-    public AttachmentModel(String fileName, int attachmentsLength, InputStream inputStream){
+    public AttachmentModel(String fileName,  InputStream inputStream){
         this.fileName = fileName;
         this.inputStream = inputStream;
-        this.attachmentsLength = attachmentsLength;
+       setAttachmentsLength(inputStream.available());
 
     }
 
