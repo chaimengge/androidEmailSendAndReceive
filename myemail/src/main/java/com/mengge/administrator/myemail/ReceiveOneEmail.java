@@ -414,7 +414,7 @@ public class ReceiveOneEmail {
                             fileName = MimeUtility.decodeText(fileName);
                         }
 
-                        attachmentModels.add(new AttachmentModel(fileName, bodyPart.getSize(), bodyPart.getInputStream()));
+                        attachmentModels.add(new AttachmentModel(fileName, bodyPart.getInputStream()));
                     }
 
                 }else if(bodyPart.isMimeType("multipart/*")){
@@ -423,7 +423,7 @@ public class ReceiveOneEmail {
                     fileName = bodyPart.getFileName();
                     if(fileName != null && fileName.toLowerCase().indexOf("gb2312") != -1){
                         fileName = MimeUtility.decodeText(fileName);
-                        attachmentModels.add(new AttachmentModel(fileName, bodyPart.getSize(), bodyPart.getInputStream()));
+                        attachmentModels.add(new AttachmentModel(fileName, bodyPart.getInputStream()));
                     }
                 }
             }
