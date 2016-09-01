@@ -81,14 +81,18 @@ public class AttachUtil {
 
 
                     int len ;
-                    byte [] buffer = new byte [8 * 1024];
-                    while ((len = bis.read()) != -1){
+                     //设置成有效字节，要不出问题
+                    byte [] buffer = new byte [inputStream.available()];
+                    while ((len = inputStream.available()) > 0){
 
                         publishProgress(len, total);
-                        bos.write(buffer, 0 ,len);
-                        bos.flush();
-                    }
 
+                        int result = inputStream.read(buffer);
+                        if (result == -1){
+                            break;
+                        }
+                    }
+                    bos.write(buffer);
                     saveMaps.put(fileName, false);
                     return  DONE;
 
